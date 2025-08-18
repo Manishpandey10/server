@@ -4,24 +4,34 @@ import bcrypt from "bcryptjs";
 import cors from "cors";
 import bodyParser from "body-parser";
 import jwt from "jsonwebtoken";
+import cookieParser from "cookie-parser";
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
+
+
 
 // ================== Middleware ==================
 app.use(
   cors({
-    origin: "http://localhost:5173", // React app
+    origin: [
+      "http://localhost:5173",            // for local dev
+      "https://manish-task.vercel.app/"
+    ],
     methods: ["GET", "POST"],
     credentials: true,
   })
 );
+
+app.use(cookieParser());
+
 app.use(bodyParser.json());
 
 // ================== MongoDB Connection ==================
 mongoose
   .connect(
-    "mongodb+srv://admin:admin123@cluster0expmanish.izoem.mongodb.net/User?retryWrites=true&w=majority&appName=Cluster0ExpManish"
+        "mongodb+srv://admin:admin123@cluster0expmanish.izoem.mongodb.net/User?retryWrites=true&w=majority&appName=Cluster0ExpManish"
   )
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("DB Error:", err));
@@ -284,5 +294,5 @@ app.use((req: Request, res: Response) => {
 
 // ================== Start Server ==================
 app.listen(PORT, () =>
-  console.log(`🚀 Server running on http://localhost:${PORT}`)
+  console.log(`🚀 Server running on port ${PORT}`)
 );
