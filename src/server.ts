@@ -15,10 +15,9 @@ const PORT = process.env.PORT || 5000;
 // ================== Middleware ==================
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",            // for local dev
-      "https://manish-task.vercel.app/"
-    ],
+    origin: ["http://localhost:5173",
+    "https://manish-task.vercel.app"],
+    
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -99,7 +98,7 @@ const validateLoginInput = (email: string, password: string) => {
   if (!email || !email.trim()) {
     errors.email = "Email is required";
   } else if (!emailRegex.test(email.trim())) {
-    errors.email = "Please enter a valid email address here";
+    errors.email = "Please enter a valid email address";
   }
 
   // Password validation
