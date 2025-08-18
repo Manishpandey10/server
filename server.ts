@@ -99,7 +99,7 @@ const validateLoginInput = (email: string, password: string) => {
   if (!email || !email.trim()) {
     errors.email = "Email is required";
   } else if (!emailRegex.test(email.trim())) {
-    errors.email = "Please enter a valid email address";
+    errors.email = "Please enter a valid email address here";
   }
 
   // Password validation
