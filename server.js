@@ -7,7 +7,8 @@ const app = express();
 const PORT = 5000;
 // ================== Middleware ==================
 app.use(cors({
-    origin: "http://localhost:5173", // React app
+    origin: "http://localhost:5173",
+"https://manish-task.vercel.app" // React app
     methods: ["GET", "POST"],
     credentials: true,
 }));
