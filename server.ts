@@ -1,9 +1,12 @@
-import express, { Request, Response, NextFunction } from "express";
+import express from "express";
 import mongoose, { Schema, Document } from "mongoose";
 import bcrypt from "bcryptjs";
 import cors from "cors";
+import bodyParser from "body-parser";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
+
+import type { Request, Response, NextFunction } from "express";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
