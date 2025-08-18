@@ -29,9 +29,7 @@ app.use(bodyParser.json());
 
 // ================== MongoDB Connection ==================
 mongoose
-  .connect(
-        "mongodb+srv://admin:admin123@cluster0expmanish.izoem.mongodb.net/User?retryWrites=true&w=majority&appName=Cluster0ExpManish"
-  )
+  .connect(process.env.MONGO_URI as string)
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("DB Error:", err));
 
