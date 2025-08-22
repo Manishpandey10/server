@@ -14,10 +14,8 @@ const PORT = process.env.PORT || 5000;
 
 // ================== Middleware ==================
 app.use(
-  cors({
-       origin: ["http://localhost:5173", "https://manish-task.vercel.app","https://vercel.com/manishpandey10s-projects"],
-
-    
+  cors({ 
+    origin: true,
     methods: ["GET", "POST"],
     credentials: true,
   })
